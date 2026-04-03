@@ -5,14 +5,9 @@ void main() => runApp(const MyApp());
 
 final GoRouter _router = GoRouter(
   routes: [
-    GoRoute(
-      path: '/',
-      name: 'home',
-      builder: (context, state) => const HomeScreen(),
-    ),
+    GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
     GoRoute(
       path: '/details',
-      name: 'details',
       builder: (context, state) => const DetailsScreen(),
     ),
   ],
@@ -24,8 +19,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: _router,
+      title: 'go_router Lesson 1',
       debugShowCheckedModeBanner: false,
+      routerConfig: _router,
     );
   }
 }
@@ -39,7 +35,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Home')),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.goNamed('details'),
+          onPressed: () => context.go('/details'),
           child: const Text('Go to Details'),
         ),
       ),
